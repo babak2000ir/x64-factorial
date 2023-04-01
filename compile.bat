@@ -1,0 +1,15 @@
+@echo off
+del *.obj
+del *.exe
+del *.lst
+del *.pdb
+
+nasm -f win64 -l factorial.lst -gcv8 -o factorial.obj factorial.asm
+
+REM Release:
+REM nasm -f win64 -l factorial.lst -o factorial.obj factorial.asm 
+
+link factorial.obj /defaultlib:ucrt.lib /defaultlib:msvcrt.lib /defaultlib:legacy_stdio_definitions.lib /defaultlib:Kernel32.lib /defaultlib:Shell32.lib /nologo /incremental:no /subsystem:console /entry:main /opt:noref /debug /pdb:"factorial.pdb" /out:factorial.exe 
+
+REM Release:
+REM link factorial.obj /defaultlib:ucrt.lib /defaultlib:msvcrt.lib /defaultlib:legacy_stdio_definitions.lib /defaultlib:Kernel32.lib /defaultlib:Shell32.lib /nologo /incremental:no /subsystem:console /entry:main /opt:ref /out:factorial.exe 
