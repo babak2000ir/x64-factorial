@@ -9,7 +9,11 @@ nasm -f win64 -l factorial.lst -gcv8 -o factorial.obj factorial.asm
 REM Release:
 REM nasm -f win64 -l factorial.lst -o factorial.obj factorial.asm 
 
-link factorial.obj /defaultlib:ucrt.lib /defaultlib:msvcrt.lib /defaultlib:legacy_stdio_definitions.lib /defaultlib:Kernel32.lib /defaultlib:Shell32.lib /nologo /incremental:no /subsystem:console /entry:main /opt:noref /debug /pdb:"factorial.pdb" /out:factorial.exe 
+REM Debug:
+REM link factorial.obj /defaultlib:ucrt.lib /defaultlib:msvcrt.lib /defaultlib:legacy_stdio_definitions.lib /defaultlib:Kernel32.lib /defaultlib:Shell32.lib /nologo /incremental:no /subsystem:console /entry:main /opt:noref /debug /pdb:"factorial.pdb" /out:factorial.exe 
 
 REM Release:
 REM link factorial.obj /defaultlib:ucrt.lib /defaultlib:msvcrt.lib /defaultlib:legacy_stdio_definitions.lib /defaultlib:Kernel32.lib /defaultlib:Shell32.lib /nologo /incremental:no /subsystem:console /entry:main /opt:ref /out:factorial.exe 
+
+REM DLL:
+link factorial.obj /dll /defaultlib:ucrt.lib /defaultlib:msvcrt.lib /defaultlib:legacy_stdio_definitions.lib /defaultlib:Kernel32.lib /defaultlib:Shell32.lib /nologo /incremental:no /opt:ref /export:factorial /out:factorial.dll 
