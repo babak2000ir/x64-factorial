@@ -17,3 +17,6 @@ REM link factorial.obj /defaultlib:ucrt.lib /defaultlib:msvcrt.lib /defaultlib:l
 
 REM DLL:
 link factorial.obj /dll /defaultlib:ucrt.lib /defaultlib:msvcrt.lib /defaultlib:legacy_stdio_definitions.lib /defaultlib:Kernel32.lib /defaultlib:Shell32.lib /nologo /incremental:no /opt:ref /export:factorial /out:factorial.dll 
+
+REM Compile and Link C code:
+cl .\c-code-test\factorial_test.c factorial.lib /Ox /link /subsystem:console /entry:main /incremental:no /machine:x64 /nologo /defaultlib:Kernel32.lib /defaultlib:User32.lib /defaultlib:ucrt.lib /defaultlib:msvcrt.lib /opt:ref 
